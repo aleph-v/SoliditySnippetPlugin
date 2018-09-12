@@ -10,23 +10,23 @@ To work the first two buttons you need to put the github raw code url into the f
 The quote to file has several options to make setting up the file easier. If startline > 0 it will insert the contract name as the properly formated solidity contract declartion line. For this reason always either quote the whole file or a code snippet within the body of a contract. Additionally if endline is equal to zero the code will automaticly inport the whole file so that you do not need to know the exact length of the code inported. If you wish to quote code within a function without getting the whole function you can check the check box and then provide the solidity code function line to insert.
 
 Example usage: URL: https://raw.githubusercontent.com/auth-os/core/dev/contracts/core/AbstractStorage.sol , Startline: 47, Endline:57, contract name: registry, Function Line unchecked will write a file registry.sol:
-''
-pragma solidity ^0.4.23;
 
-contract registry{
+    pragma solidity ^0.4.23;
 
-function createRegistry(address _registry_idx, address _implementation) external returns (bytes32) {
-    bytes32 new_exec_id = keccak256(++nonce);
-    put(new_exec_id, keccak256(msg.sender, EXEC_PERMISSIONS), bytes32(1));
-    put(new_exec_id, APP_IDX_ADDR, bytes32(_registry_idx));
-    put(new_exec_id, keccak256(REG_APP, 'implementation'), bytes32(_implementation));
-    put(new_exec_id, keccak256(REG_APP_VER, 'implementation'), bytes32(_implementation));
-    put(new_exec_id, keccak256(UPDATE_INST_SEL, 'implementation'), bytes32(_implementation));
-    put(new_exec_id, keccak256(UPDATE_EXEC_SEL, 'implementation'), bytes32(_implementation));
-    emit ApplicationInitialized(new_exec_id, _registry_idx, msg.sender);
-    return new_exec_id;
-  }
- }''
+    contract registry{
+
+    function createRegistry(address _registry_idx, address _implementation) external returns (bytes32) {
+        bytes32 new_exec_id = keccak256(++nonce);
+        put(new_exec_id, keccak256(msg.sender, EXEC_PERMISSIONS), bytes32(1));
+        put(new_exec_id, APP_IDX_ADDR, bytes32(_registry_idx));
+        put(new_exec_id, keccak256(REG_APP, 'implementation'), bytes32(_implementation));
+        put(new_exec_id, keccak256(REG_APP_VER, 'implementation'), bytes32(_implementation));
+        put(new_exec_id, keccak256(UPDATE_INST_SEL, 'implementation'), bytes32(_implementation));
+        put(new_exec_id, keccak256(UPDATE_EXEC_SEL, 'implementation'), bytes32(_implementation));
+        emit ApplicationInitialized(new_exec_id, _registry_idx, msg.sender);
+        return new_exec_id;
+    }
+    }
   
 URL: https://raw.githubusercontent.com/auth-os/core/dev/contracts/core/AbstractStorage.sol , Startline: 48, Endline:56, contract name: registry, Function Line checked with value "function createRegistry(address _registry_idx, address _implementation) external returns (bytes32) {" will write a file registry.sol which is identical to the one above.
 
