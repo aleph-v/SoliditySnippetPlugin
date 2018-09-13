@@ -4,10 +4,12 @@ test contract creation
 */
 var addrResolverByteCode = '0x6060604052341561000f57600080fd5b33600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555061033c8061005f6000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806338cc483114610067578063767800de146100bc578063a6f9dae114610111578063d1d80fdf1461014a575b600080fd5b341561007257600080fd5b61007a610183565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100c757600080fd5b6100cf6101ac565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561011c57600080fd5b610148600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101d1565b005b341561015557600080fd5b610181600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610271565b005b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561022d57600080fd5b80600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156102cd57600080fd5b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058201b23355f578cb9a23c0a43a440ab2631b62df7be0a8e759812a70f01344224da0029'
 
-const ownableURL = "https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-solidity/master/contracts/ownership/Ownable.sol"
-const safemathURL = "https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-solidity/master/contracts/math/SafeMath.sol"
-const merkleURL = "https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-solidity/master/contracts/cryptography/MerkleProof.sol"
-const sigURL = "https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-solidity/master/contracts/cryptography/ECDSA.sol"
+const ownableURL = "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/math/Math.sol"
+const safemathURL = "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/ownership/Ownable.sol"
+const merkleURL = "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/cryptography/MerkleProof.sol"
+const sigURL = "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/cryptography/ECDSA.sol"
+const stringURL = "https://github.com/Arachnid/solidity-stringutils/src/strings.sol"
+const openzBaseURL ="https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/"
 
 const addrResolverTx = {
   gasLimit: '0x2710',
@@ -38,7 +40,7 @@ window.onload = function () {
     extension.call('editor','getCurrentFile', [], function (error, result) {
       extension.call('editor','getFile', [result[0]], function (error1, result1) {
 
-        insertImport(result1[0], result[0],  document.getElementById('contractName').value)
+        insertImport(result1[0], result[0],  document.getElementById('contractName').value, true)
     })
   })
   })
@@ -54,52 +56,72 @@ window.onload = function () {
      })
   })
   document.querySelector('input#safeMath').addEventListener('click', function () {
-    fileParser(fetch(safemathURL),0,0,"SafeMath",false)
 
     extension.call('editor','getCurrentFile', [], function (error, result) {
       extension.call('editor','getFile', [result[0]], function (error1, result1) {
 
-        insertImport(result1[0], result[0], "SafeMath")
+        insertImport(result1[0], result[0], safemathURL, false)
     })
   })
   })
   document.querySelector('input#ownable').addEventListener('click', function () {
-    fileParser(fetch(ownableURL),0,0,"ownable",false)
 
     extension.call('editor','getCurrentFile', [], function (error, result) {
       extension.call('editor','getFile', [result[0]], function (error1, result1) {
 
-        insertImport(result1[0], result[0], "ownable")
+        insertImport(result1[0], result[0], ownableURL, false)
     })
   })
   })
   document.querySelector('input#merkle').addEventListener('click', function () {
-    fileParser(fetch(merkleURL),0,0,"MerkleLibary",false)
 
     extension.call('editor','getCurrentFile', [], function (error, result) {
       extension.call('editor','getFile', [result[0]], function (error1, result1) {
 
-      insertImport(result1[0], result[0], "MerkleLibary")
+      insertImport(result1[0], result[0], merkleURL, false)
     })
   })
   })
   document.querySelector('input#sig').addEventListener('click', function () {
-    fileParser(fetch(sigURL),0,0,"signatureLibary",false)
 
     extension.call('editor','getCurrentFile', [], function (error, result) {
       extension.call('editor','getFile', [result[0]], function (error1, result1) {
 
-        insertImport(result1[0], result[0], "signatureLibary")
+        insertImport(result1[0], result[0], sigURL, false)
     })
   })
  })
+ document.querySelector('input#string').addEventListener('click', function () {
+
+   extension.call('editor','getCurrentFile', [], function (error, result) {
+     extension.call('editor','getFile', [result[0]], function (error1, result1) {
+
+       insertImport(result1[0], result[0], stringURL, false)
+   })
+ })
+})
+
+document.querySelector('input#zepplinImport').addEventListener('click', function () {
+  zepplinURL = openzBaseURL + document.getElementById('path').value
+
+  extension.call('editor','getCurrentFile', [], function (error, result) {
+    extension.call('editor','getFile', [result[0]], function (error1, result1) {
+
+      insertImport(result1[0], result[0], zepplinURL, false)
+  })
+  })
+})
 }
 
-async function insertImport(code, currentPath, toImport){
+async function insertImport(code, currentPath, toImport, isLocal){
   code = await code.split('\n')
-  await code.splice(1,0,"import \".\\browser\\" + toImport + ".sol\"")
+  if(isLocal){
+    await code.splice(1,0,"import \"./" + toImport + ".sol\"\;")
+  }else{
+    await code.splice(1,0,"import \"" + toImport + "\"\;")
+  }
 
-  currentCode = await code.join('\r\n')
+  currentCode = await code.join('\n')
   await extension.call('editor', 'setFile', [currentPath, currentCode], function (error, result) { console.log(error, result) })
 }
 
@@ -117,7 +139,7 @@ async function projectParser(fetchReturn, start, end, code, currentPath){
       await currentCode.splice(document.getElementById('insertionLine').value, 0, data[i])
   }
 
-  currentCode = await currentCode.join('\r\n')
+  currentCode = await currentCode.join('\n')
   console.log(currentPath)
   console.log(currentCode)
   await extension.call('editor', 'setFile', [currentPath, currentCode], function (error, result) { console.log(error, result) })
@@ -149,6 +171,6 @@ async function fileParser(fetchReturn, start, end, contractName, hasFunction) {
   }
 
   let path = await "browser/" + contractName +".sol"
-  let content = await data.join('\r\n')
+  let content = await data.join('\n')
   extension.call('editor', 'setFile', [path, content], function (error, result) { console.log(error, result) })
 }

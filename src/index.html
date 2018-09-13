@@ -35,29 +35,34 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	</head>
 	<body>
-		<div>Solidity Snippet</div>
+		<h3> Solidity Snippet Importer </h4>
 		<input type="text" id="gitURL">Link</input> <br>
 		<input type="number" id="codeStart">Start Line </imput> <br>
 		<input type="number" id="codeEnd">End Line</input> <br>
 
 		<br>
 
+		<h4> Quote Some code into your Browser Filesytem</h4>
 		<input type="button" id="quoteToFile">Quote to File</input> <br>
 		<input type ="text" id ="contractName"> New Contract Name </imput> <br>
 		<input type="checkbox" id="hasFunctionLine"> Add Function Line </imput> <br>
 		<input type = "text" id ="functionName"> Imput Function Line </imput> <br>
 		<br>
 
+		<h4> Quote Some code into your Project</h4>
 		<input type="button" id="quoteToProject">Quote to Project</input> <br>
-			<input type = "number" id ="insertionLine"> Line to insert at </imput> <br>
+		<input type = "number" id ="insertionLine"> Line to insert at </imput> <br>
 
-
-		<br>
+		<h4>Quick Utilities Links</h4>
 			<input type="button" id="safeMath">Import SafeMath</input> <br>
 			<input type="button" id="ownable">Import Ownable</input> <br>
 			<input type="button" id="merkle">Import Merkle Proofs</input> <br>
+			<input type="button" id="string">Import String Utilities</input> <br>
 			<input type="button" id="sig">Import Eleptic Curve Signatures</input> <br>
-			
+		<h4>Import an OpenZeppelin File from its contracts path</h3>
+			<input type = "text" id ="path"> Input the path from the Contracts Folder </imput> <br>
+			<input type="button" id="zepplinImport">Import</input> <br>
+
 		<div id='compilationdata'></div>
 	</body>
 </html>
