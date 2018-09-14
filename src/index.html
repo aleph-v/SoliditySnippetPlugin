@@ -37,21 +37,21 @@
 	<body>
 		<h3> Solidity Snippet Importer </h4>
 		<input type="text" id="gitURL">Link</input> <br>
-		<input type="number" id="codeStart">Start Line </imput> <br>
+		<input type="number" id="codeStart">Start Line </input> <br>
 		<input type="number" id="codeEnd">End Line</input> <br>
 
 		<br>
 
 		<h4> Quote Some code into your Browser Filesytem</h4>
 		<input type="button" id="quoteToFile">Quote to File</input> <br>
-		<input type ="text" id ="contractName"> New Contract Name </imput> <br>
-		<input type="checkbox" id="hasFunctionLine"> Add Function Line </imput> <br>
-		<input type = "text" id ="functionName"> Imput Function Line </imput> <br>
+		<input type ="text" id ="contractName"> New Contract Name </input> <br>
+		<input type="checkbox" id="hasFunctionLine"> Add Function Line </input> <br>
+		<input type = "text" id ="functionName"> Imput Function Line </input> <br>
 		<br>
 
 		<h4> Quote Some code into your Project</h4>
 		<input type="button" id="quoteToProject">Quote to Project</input> <br>
-		<input type = "number" id ="insertionLine"> Line to insert at </imput> <br>
+		<input type = "number" id ="insertionLine"> Line to insert at </input> <br>
 
 		<h4>Quick Utilities Links</h4>
 			<input type="button" id="safeMath">Import SafeMath</input> <br>
@@ -59,10 +59,66 @@
 			<input type="button" id="merkle">Import Merkle Proofs</input> <br>
 			<input type="button" id="string">Import String Utilities</input> <br>
 			<input type="button" id="sig">Import Eleptic Curve Signatures</input> <br>
-		<h4>Import an OpenZeppelin File from its contracts path</h3>
-			<input type = "text" id ="path"> Input the path from the Contracts Folder </imput> <br>
+		<h4>Import an OpenZeppelin File</h3>
 			<input type="button" id="zepplinImport">Import</input> <br>
-
+			<select id= "path" >
+					<option value="utils/Address.sol"> utils/Address.sol </option>
+					<option value="utils/Counter.sol">  utils/Counter.sol </option>
+					<option value="utils/ReentrancyGuard.sol"> utils/ReentrancyGuard.sol </option>
+					<option value="token/ERC20/ERC20.sol"> token/ERC20/ERC20.sol </option>
+					<option value="token/ERC20/ERC20Burnable.sol">token/ERC20/ERC20Burnable.sol</option>
+					<option value="token/ERC20/ERC20Capped.sol">token/ERC20/ERC20Capped.sol</option>
+					<option value="token/ERC20/ERC20Detailed.sol">token/ERC20/ERC20Detailed.sol</option>
+					<option value="token/ERC20/ERC20Mintable.sol">token/ERC20/ERC20Mintable.sol</option>
+					<option value="token/ERC20/ERC20Pausable.sol">token/ERC20/ERC20Pausable.sol</option>
+					<option value="token/ERC20/IERC20.sol">token/ERC20/IERC20.sol</option>
+					<option value="token/ERC20/SafeERC20.sol">token/ERC20/SafeERC20.sol</option>
+					<option value="token/ERC20/TokenTimelock.sol">token/ERC20/TokenTimelock.sol</option>
+					<option value="token/ERC721/ERC721.sol">token/ERC721/ERC721.sol</option>
+					<option value="token/ERC721/ERC721Burnable.sol">token/ERC721/ERC721Burnable.sol</option>
+					<option value="token/ERC721/ERC721Enumerable.sol">token/ERC721/ERC721Enumerable.sol</option>
+					<option value="token/ERC721/ERC721Full.sol">token/ERC721/ERC721Full.sol</option>
+					<option value="token/ERC721/ERC721Holder.sol">token/ERC721/ERC721Holder.sol</option>
+					<option value="token/ERC721/ERC721Metadata.sol">token/ERC721/ERC721Metadata.sol</option>
+					<option value="token/ERC721/ERC721Mintable.sol">token/ERC721/ERC721Mintable.sol</option>
+					<option value="token/ERC721/ERC721Pausable.sol">token/ERC721/ERC721Pausable.sol</option>
+					<option value="token/ERC721/IERC721.sol">token/ERC721/IERC721.sol</option>
+					<option value="token/ERC721/IERC721Enumerable.sol">token/ERC721/IERC721Enumerable.sol</option>
+					<option value="token/ERC721/IERC721Full.sol">token/ERC721/IERC721Full.sol</option>
+					<option value="token/ERC721/IERC721Metadata.sol">token/ERC721/IERC721Metadata.sol</option>
+					<option value="token/ERC721/IERC721Receiver.sol">token/ERC721/IERC721Receiver.sol</option>
+					<option value="payment/ConditionalEscrow.sol">payment/ConditionalEscrow.sol</option>
+					<option value="payment/Escrow.sol">payment/Escrow.sol</option>
+					<option value="payment/PullPayment.sol">payment/PullPayment.sol</option>
+					<option value="payment/RefundEscrow.sol">payment/RefundEscrow.sol</option>
+					<option value="payment/SplitPayment.sol">payment/SplitPayment.sol</option>
+					<option value="ownership/Ownable.sol">ownership/Ownable.sol</option>
+					<option value="ownership/Secondary.sol">ownership/Secondary.sol</option>
+					<option value="math/Math.sol">math/Math.sol</option>
+					<option value="math/SafeMath.sol">math/SafeMath.sol</option>
+					<option value="lifecycle/Pausable.sol">lifecycle/Pausable.sol</option>
+					<option value="introspection/ERC165.sol">introspection/ERC165.sol</option>
+					<option value="introspection/ERC165Checker.sol">introspection/ERC165Checker.sol</option>
+					<option value="introspection/IREC165.sol">introspection/IREC165.sol</option>
+					<option value="cryptography/ECDSA.sol">cryptography/ECDSA.sol</option>
+					<option value="cryptography/MerkleProof.sol">cryptography/MerkleProof.sol</option>
+					<option value="crowdsale/Crowdsale.sol">crowdsale/Crowdsale.sol</option>
+					<option value="crowdsale/distribution/FinalizableCrowdsale.sol">crowdsale/distribution/FinalizableCrowdsale.sol</option>
+					<option value="crowdsale/distribution/PostDeliveryCrowdsale.sol">crowdsale/distribution/PostDeliveryCrowdsale.sol</option>
+					<option value="crowdsale/distribution/RefundableCrowdsale.sol">crowdsale/distribution/RefundableCrowdsale.sol</options>
+					<option value="crowdsale/emission/AllowanceCrowdsale.sol">crowdsale/emission/AllowanceCrowdsale.sol</option>
+					<option value="crowdsale/emission/MintedCrowdsale.sol">crowdsale/emission/MintedCrowdsale.sol</option>
+					<option value="crowdsale/price/IncreasingPriceCrowdsale.sol">crowdsale/price/IncreasingPriceCrowdsale.sol</option>
+					<option value="crowdsale/validation/CappedCrowdsale.sol">crowdsale/validation/CappedCrowdsale.sol</option>
+					<option value="crowdsale/validation/IndividuallyCappedCrowdsale.sol">crowdsale/validation/IndividuallyCappedCrowdsale.sol</option>
+					<option value="crowdsale/validation/TimedCrowdsale.sol">crowdsale/validation/TimedCrowdsale.sol</option>
+					<option value="bounties/BreakInvariantBounty.sol">bounties/BreakInvariantBounty.sol</option>
+					<option value="access/Roles.sol">access/Roles.sol</option>
+					<option value="access/roles/CapperRole.sol">access/roles/CapperRole.sol</option>
+					<option value="access/roles/MinterRole.sol">access/roles/MinterRole.sol</option>
+					<option value="access/roles/PauserRole.sol">access/roles/PauserRole.sol</option>
+					<option value="access/roles/SignerRole.sol">access/roles/SignerRole.sol</option>
+				</select>
 		<div id='compilationdata'></div>
 	</body>
 </html>
