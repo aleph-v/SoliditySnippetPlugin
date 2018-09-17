@@ -1,5 +1,5 @@
 # TrufflePlugin
-The following documents the guide to using the Solidity snippet plugin for truffle that was developed to statisfy a git coin bounty put out by Remix:
+The following documents the guide to using the Solidity snippet plugin for truffle that was developed to statisfy a gitcoin bounty put out by Remix:
 
 To inport the plugin follow the steps in https://github.com/yann300/remix-plugin .
 
