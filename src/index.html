@@ -61,64 +61,79 @@
 			<input type="button" id="sig">Import Eleptic Curve Signatures</input> <br>
 		<h4>Import an OpenZeppelin File</h3>
 			<input type="button" id="zepplinImport">Import</input> <br>
-			<select id= "path" >
-					<option value="utils/Address.sol"> utils/Address.sol </option>
-					<option value="utils/Counter.sol">  utils/Counter.sol </option>
-					<option value="utils/ReentrancyGuard.sol"> utils/ReentrancyGuard.sol </option>
-					<option value="token/ERC20/ERC20.sol"> token/ERC20/ERC20.sol </option>
-					<option value="token/ERC20/ERC20Burnable.sol">token/ERC20/ERC20Burnable.sol</option>
-					<option value="token/ERC20/ERC20Capped.sol">token/ERC20/ERC20Capped.sol</option>
-					<option value="token/ERC20/ERC20Detailed.sol">token/ERC20/ERC20Detailed.sol</option>
-					<option value="token/ERC20/ERC20Mintable.sol">token/ERC20/ERC20Mintable.sol</option>
-					<option value="token/ERC20/ERC20Pausable.sol">token/ERC20/ERC20Pausable.sol</option>
-					<option value="token/ERC20/IERC20.sol">token/ERC20/IERC20.sol</option>
-					<option value="token/ERC20/SafeERC20.sol">token/ERC20/SafeERC20.sol</option>
-					<option value="token/ERC20/TokenTimelock.sol">token/ERC20/TokenTimelock.sol</option>
-					<option value="token/ERC721/ERC721.sol">token/ERC721/ERC721.sol</option>
-					<option value="token/ERC721/ERC721Burnable.sol">token/ERC721/ERC721Burnable.sol</option>
-					<option value="token/ERC721/ERC721Enumerable.sol">token/ERC721/ERC721Enumerable.sol</option>
-					<option value="token/ERC721/ERC721Full.sol">token/ERC721/ERC721Full.sol</option>
-					<option value="token/ERC721/ERC721Holder.sol">token/ERC721/ERC721Holder.sol</option>
-					<option value="token/ERC721/ERC721Metadata.sol">token/ERC721/ERC721Metadata.sol</option>
-					<option value="token/ERC721/ERC721Mintable.sol">token/ERC721/ERC721Mintable.sol</option>
-					<option value="token/ERC721/ERC721Pausable.sol">token/ERC721/ERC721Pausable.sol</option>
-					<option value="token/ERC721/IERC721.sol">token/ERC721/IERC721.sol</option>
-					<option value="token/ERC721/IERC721Enumerable.sol">token/ERC721/IERC721Enumerable.sol</option>
-					<option value="token/ERC721/IERC721Full.sol">token/ERC721/IERC721Full.sol</option>
-					<option value="token/ERC721/IERC721Metadata.sol">token/ERC721/IERC721Metadata.sol</option>
-					<option value="token/ERC721/IERC721Receiver.sol">token/ERC721/IERC721Receiver.sol</option>
-					<option value="payment/ConditionalEscrow.sol">payment/ConditionalEscrow.sol</option>
-					<option value="payment/Escrow.sol">payment/Escrow.sol</option>
-					<option value="payment/PullPayment.sol">payment/PullPayment.sol</option>
-					<option value="payment/RefundEscrow.sol">payment/RefundEscrow.sol</option>
-					<option value="payment/SplitPayment.sol">payment/SplitPayment.sol</option>
-					<option value="ownership/Ownable.sol">ownership/Ownable.sol</option>
-					<option value="ownership/Secondary.sol">ownership/Secondary.sol</option>
-					<option value="math/Math.sol">math/Math.sol</option>
-					<option value="math/SafeMath.sol">math/SafeMath.sol</option>
-					<option value="lifecycle/Pausable.sol">lifecycle/Pausable.sol</option>
-					<option value="introspection/ERC165.sol">introspection/ERC165.sol</option>
-					<option value="introspection/ERC165Checker.sol">introspection/ERC165Checker.sol</option>
-					<option value="introspection/IREC165.sol">introspection/IREC165.sol</option>
-					<option value="cryptography/ECDSA.sol">cryptography/ECDSA.sol</option>
-					<option value="cryptography/MerkleProof.sol">cryptography/MerkleProof.sol</option>
-					<option value="crowdsale/Crowdsale.sol">crowdsale/Crowdsale.sol</option>
-					<option value="crowdsale/distribution/FinalizableCrowdsale.sol">crowdsale/distribution/FinalizableCrowdsale.sol</option>
-					<option value="crowdsale/distribution/PostDeliveryCrowdsale.sol">crowdsale/distribution/PostDeliveryCrowdsale.sol</option>
-					<option value="crowdsale/distribution/RefundableCrowdsale.sol">crowdsale/distribution/RefundableCrowdsale.sol</options>
-					<option value="crowdsale/emission/AllowanceCrowdsale.sol">crowdsale/emission/AllowanceCrowdsale.sol</option>
-					<option value="crowdsale/emission/MintedCrowdsale.sol">crowdsale/emission/MintedCrowdsale.sol</option>
-					<option value="crowdsale/price/IncreasingPriceCrowdsale.sol">crowdsale/price/IncreasingPriceCrowdsale.sol</option>
-					<option value="crowdsale/validation/CappedCrowdsale.sol">crowdsale/validation/CappedCrowdsale.sol</option>
-					<option value="crowdsale/validation/IndividuallyCappedCrowdsale.sol">crowdsale/validation/IndividuallyCappedCrowdsale.sol</option>
-					<option value="crowdsale/validation/TimedCrowdsale.sol">crowdsale/validation/TimedCrowdsale.sol</option>
-					<option value="bounties/BreakInvariantBounty.sol">bounties/BreakInvariantBounty.sol</option>
-					<option value="access/Roles.sol">access/Roles.sol</option>
-					<option value="access/roles/CapperRole.sol">access/roles/CapperRole.sol</option>
-					<option value="access/roles/MinterRole.sol">access/roles/MinterRole.sol</option>
-					<option value="access/roles/PauserRole.sol">access/roles/PauserRole.sol</option>
-					<option value="access/roles/SignerRole.sol">access/roles/SignerRole.sol</option>
-				</select>
+			<select id= "path" > </select>
 		<div id='compilationdata'></div>
 	</body>
+
+	<script src="../vendors/jquery-2.1.0.min.js"></script>
+  <script src="../vendors/underscore-min.js"></script>
+  <script src="../gh3.js"></script>
+
+	<p id="demo"></p>
+  <script>
+    var oz = new Gh3.User("OpenZeppelin")
+			,	repoTitle = $("h1")
+      ,	branchTitle = $("h2")
+			, dirContents = $("ul");
+		output = []
+
+    var ozBlog = new Gh3.Repository("openzeppelin-solidity", oz);
+
+    ozBlog.fetch(function (err, res) {
+      if(err) { throw "outch ..." }
+      repoTitle.html(ozBlog.full_name);
+      ozBlog.fetchBranches(function (err, res) {
+        var master = ozBlog.getBranchByName("master");
+        branchTitle.html(master.name + " (" + master.sha + ") :");
+        master.fetchContents(function (err, res) {
+					var dir = master.getDirByName('contracts');
+					dir.fetchContents(function (err, res) {
+						if(err) { throw "outch ..." }
+						//console.log(dir.getContents());
+						dir.eachContent(function (content) {
+							//console.log(content.name, content.type, content.size);
+
+							 if(content.type === "dir" &&(content.name != "mocks" || content.name != "draft")){
+								 //console.log("Went into " + content.path)
+								 recurse(content, output)
+							 }else{
+								 if(content.path.slice(-4) == ".sol"){
+									 addOption(content.path)
+								 }
+							 }
+						});
+					});
+        });
+      })
+    });
+		function recurse(dir, storage){
+			dir.fetchContents(function (err, res) {
+				if(err) { throw "outch ..." }
+				//console.log(dir.getContents());
+				dir.eachContent(function (content) {
+					//console.log(content.name, content.type, content.size);
+
+					 if(content.type === "dir"){
+						// console.log("Went into " + content.path)
+						 recurse(content, storage)
+					 } else{
+						 if(content.path.slice(-4) == ".sol"){
+							// console.log(content.path)
+							 addOption(content.path)
+						 }
+					 }
+				});
+			});
+		}
+		function addOption(path){
+				var x = document.getElementById("path");
+				newPath = path.slice(10,path.length)
+				//console.log(newPath)
+				var option = document.createElement("option");
+	    	option.innerHTML = newPath;
+				option.value = newPath;
+	    	x.add(option);
+		}
+
+  </script>
 </html>
