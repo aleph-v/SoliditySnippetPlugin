@@ -65,12 +65,15 @@
 		<div id='compilationdata'></div>
 	</body>
 
+
 	<script src="../vendors/jquery-2.1.0.min.js"></script>
   <script src="../vendors/underscore-min.js"></script>
   <script src="../gh3.js"></script>
 
-	<p id="demo"></p>
   <script>
+	timeout = localStorage.getItem("lastTimeSoliditySnippetPlugin") //Very long name to prevent an possiblity of overwriting other Remix local storage
+	var d = new Date();
+	if(timeout < d.getTime() - 3600000){ //604800000 is miliseconds in a week
     var oz = new Gh3.User("OpenZeppelin")
 			,	repoTitle = $("h1")
       ,	branchTitle = $("h2")
@@ -133,7 +136,14 @@
 	    	option.innerHTML = newPath;
 				option.value = newPath;
 	    	x.add(option);
+
+				localStorage.setItem("lastTimeSoliditySnippetPlugin", d.getTime())
+				localStorage.setItem("listSoliditySnippetPlugin", document.getElementById("path").innerHTML)
 		}
+
+	}else{
+		document.getElementById("path").innerHTML = localStorage.getItem("listSoliditySnippetPlugin")
+	}
 
   </script>
 </html>
