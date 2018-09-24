@@ -36,11 +36,24 @@
 	</head>
 	<body>
 		<h3> Solidity Snippet Importer </h4>
+		<h4>Quick Utilities Links</h4>
+				<input type="button" id="safeMath">Import SafeMath</input> <br>
+				<input type="button" id="ownable">Import Ownable</input> <br>
+				<input type="button" id="merkle">Import Merkle Proofs</input> <br>
+				<input type="button" id="string">Import String Utilities</input> <br>
+				<input type="button" id="sig">Import Eleptic Curve Signatures</input> <br>
+		<h4>Import an OpenZeppelin File</h3>
+				<input type="button" id="zepplinImport">Import</input> <br>
+				<select id= "path" > </select>
+				<p> Please note that the drafts and mocks directories of OpenZeppelin are not necessarily finished code.
+					Don't use them if you aren't sure of what you are doing. </p>
+			<div id='compilationdata'></div>
+
+		<br>
+		<h3> Raw Source Quoting </h3>
 		<input type="text" id="gitURL">Link</input> <br>
 		<input type="number" id="codeStart">Start Line </input> <br>
 		<input type="number" id="codeEnd">End Line</input> <br>
-
-		<br>
 
 		<h4> Quote Some code into your Browser Filesytem</h4>
 		<input type="button" id="quoteToFile">Quote to File</input> <br>
@@ -52,17 +65,9 @@
 		<h4> Quote Some code into your Project</h4>
 		<input type="button" id="quoteToProject">Quote to Project</input> <br>
 		<input type = "number" id ="insertionLine"> Line to insert at </input> <br>
+		<br>
 
-		<h4>Quick Utilities Links</h4>
-			<input type="button" id="safeMath">Import SafeMath</input> <br>
-			<input type="button" id="ownable">Import Ownable</input> <br>
-			<input type="button" id="merkle">Import Merkle Proofs</input> <br>
-			<input type="button" id="string">Import String Utilities</input> <br>
-			<input type="button" id="sig">Import Eleptic Curve Signatures</input> <br>
-		<h4>Import an OpenZeppelin File</h3>
-			<input type="button" id="zepplinImport">Import</input> <br>
-			<select id= "path" > </select>
-		<div id='compilationdata'></div>
+		View the readme on <a href="https://github.com/pvienhage/SoliditySnippetPlugin/blob/master/README.md">  github</a>, and if you have any issues please make sure to open them there.
 	</body>
 
 
@@ -96,7 +101,7 @@
 						dir.eachContent(function (content) {
 							//console.log(content.name, content.type, content.size);
 
-							 if(content.type === "dir" &&(content.name != "mocks" || content.name != "draft")){
+							 if(content.type === "dir"){
 								 //console.log("Went into " + content.path)
 								 recurse(content, output)
 							 }else{
