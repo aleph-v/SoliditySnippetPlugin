@@ -79,7 +79,7 @@
   <script>
 	timeout = localStorage.getItem("lastTimeSoliditySnippetPlugin") //Very long name to prevent an possiblity of overwriting other Remix local storage
 	var d = new Date();
-	if(timeout < d.getTime() - 360000){ //360000 is miliseconds in an hour
+	if(timeout < d.getTime() - 3600000){ //3600000 is miliseconds in an hour
     var oz = new Gh3.User("OpenZeppelin")
 			,	repoTitle = $("h1")
       ,	branchTitle = $("h2")
