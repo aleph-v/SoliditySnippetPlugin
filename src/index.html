@@ -78,7 +78,7 @@
   <script>
 	timeout = localStorage.getItem("lastTimeSoliditySnippetPlugin") //Very long name to prevent an possiblity of overwriting other Remix local storage
 	var d = new Date();
-	if(timeout < d.getTime() - 3600000){ //604800000 is miliseconds in a week
+	if(timeout < d.getTime() - 36){ //604800000 is miliseconds in a week
     var oz = new Gh3.User("OpenZeppelin")
 			,	repoTitle = $("h1")
       ,	branchTitle = $("h2")
@@ -101,7 +101,7 @@
 						dir.eachContent(function (content) {
 							//console.log(content.name, content.type, content.size);
 
-							 if(content.type === "dir"){
+							 if(content.type === "dir" && content.path != "contracts/mocks"){
 								 //console.log("Went into " + content.path)
 								 recurse(content, output)
 							 }else{
@@ -122,7 +122,7 @@
 					//console.log(content.name, content.type, content.size);
 
 					 if(content.type === "dir"){
-						// console.log("Went into " + content.path)
+						 //console.log("Went into " + content.path)
 						 recurse(content, storage)
 					 } else{
 						 if(content.path.slice(-4) == ".sol"){
