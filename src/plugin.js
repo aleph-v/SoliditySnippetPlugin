@@ -170,7 +170,12 @@ async function fileParser(fetchReturn, start, end, contractName, hasFunction) {
     await data.splice(data.length-1,0," } ")
   }
 
-  let path = await "browser/" + contractName +".sol"
-  let content = await data.join('\n')
-  extension.call('editor', 'setFile', [path, content], function (error, result) { console.log(error, result) })
+  extension.call('editor','getCurrentFile', [], function (error, result) {
+    result = result[0]
+    let index = result.lastIndexOf('/') + 1
+    path = result.slice(0,index) + contractName + ".sol"
+
+    let content = data.join('\n')
+    extension.call('editor', 'setFile', [path, content], function (error, result) { console.log(error, result) })
+  })
 }
