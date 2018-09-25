@@ -44,6 +44,7 @@
 				<input type="button" class = "btn" id="string" value = "Import String Utilities"></input> <br>
 				<input type="button" class = "btn" id="sig" value = "Import Eleptic Curve Signatures"></input> <br>
 		<h4>Import an OpenZeppelin File</h3>
+				<span>Search:</span><input type="text" id="filterOpenZep"></input><span id="filterNumber"></span>
 				<input type="button" class = "btn" id="zepplinImport" value = "Import"></input> <br>
 				<select id= "path" > </select>
 				<p> Please note that the drafts and mocks directories of OpenZeppelin are not necessarily finished code.
@@ -150,6 +151,21 @@
 	}else{
 		document.getElementById("path").innerHTML = localStorage.getItem("listSoliditySnippetPlugin")
 	}
+	  
+	var filter = document.getElementById('filterOpenZep')
+	filter.addEventListener('keyup', function () {
+		var opts = document.querySelectorAll('option')
+		var nb = 0
+		opts.forEach(function (opt) {
+			if (!filter.value) {
+				opt.style.display = "block"
+			} else {
+				opt.style.display = opt.value.toLowerCase().indexOf(filter.value) === -1 ? 'none' : 'block'	
+			}
+			if (opt.style.display == "block") nb++
+		})
+		document.getElementById('filterNumber').innerHTML = ' ' + nb + ' filtered'
+	})
 
   </script>
 </html>
