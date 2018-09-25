@@ -37,13 +37,13 @@
 	<body>
 		<h3> Solidity Snippet Importer </h4>
 		<h4>Quick Utilities Links</h4>
-				<input type="button" id="safeMath">Import SafeMath</input> <br>
-				<input type="button" id="ownable">Import Ownable</input> <br>
-				<input type="button" id="merkle">Import Merkle Proofs</input> <br>
-				<input type="button" id="string">Import String Utilities</input> <br>
-				<input type="button" id="sig">Import Eleptic Curve Signatures</input> <br>
+				<input type="button" class = "btn" id="safeMath" value ="Import SafeMath"></input> <br>
+				<input type="button" class = "btn" id="ownable" value = "Import Ownable"></input> <br>
+				<input type="button" class = "btn" id="merkle" value = "Import Merkle Proofs"></input> <br>
+				<input type="button" class = "btn" id="string" value = "Import String Utilities"></input> <br>
+				<input type="button" class = "btn" id="sig" value = "Import Eleptic Curve Signatures"></input> <br>
 		<h4>Import an OpenZeppelin File</h3>
-				<input type="button" id="zepplinImport">Import</input> <br>
+				<input type="button" class = "btn" id="zepplinImport" value = "Import"></input> <br>
 				<select id= "path" > </select>
 				<p> Please note that the drafts and mocks directories of OpenZeppelin are not necessarily finished code.
 					Don't use them if you aren't sure of what you are doing. </p>
@@ -56,14 +56,14 @@
 		<input type="number" id="codeEnd">End Line</input> <br>
 
 		<h4> Quote Some code into your Browser Filesytem</h4>
-		<input type="button" id="quoteToFile">Quote to File</input> <br>
+		<input type="button" class = "btn" id="quoteToFile" value ="Quote to File"></input> <br>
 		<input type ="text" id ="contractName"> New Contract Name </input> <br>
 		<input type="checkbox" id="hasFunctionLine"> Add Function Line </input> <br>
 		<input type = "text" id ="functionName"> Imput Function Line </input> <br>
 		<br>
 
 		<h4> Quote Some code into your Project</h4>
-		<input type="button" id="quoteToProject">Quote to Project</input> <br>
+		<input type="button" class = "btn" id="quoteToProject" value = "Quote to Project"></input> <br>
 		<input type = "number" id ="insertionLine"> Line to insert at </input> <br>
 		<br>
 
@@ -78,7 +78,7 @@
   <script>
 	timeout = localStorage.getItem("lastTimeSoliditySnippetPlugin") //Very long name to prevent an possiblity of overwriting other Remix local storage
 	var d = new Date();
-	if(timeout < d.getTime() - 36){ //604800000 is miliseconds in a week
+	if(timeout < d.getTime() - 360000){ //360000 is miliseconds in an hour
     var oz = new Gh3.User("OpenZeppelin")
 			,	repoTitle = $("h1")
       ,	branchTitle = $("h2")
