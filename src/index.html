@@ -34,7 +34,7 @@
 		<script type="text/javascript" src="remix-api.js"></script>
         <script type="text/javascript" src="plugin.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-		<style> 
+		<style>
 			body {
 				padding: 10px;
 			}
@@ -66,15 +66,15 @@
 		<input type="number" id="codeEnd">End Line</input> <br>
 
 		<h4> Quote Some code into your Browser Filesytem</h4>
-		<input type="button" class = "btn" id="quoteToFile" value ="Quote to File"></input> <br>
 		<input type ="text" id ="contractName"> New Contract Name </input> <br>
 		<input type="checkbox" id="hasFunctionLine"> Add Function Line </input> <br>
 		<input type = "text" id ="functionName"> Imput Function Line </input> <br>
+		<input type="button" class = "btn" id="quoteToFile" value ="Quote to File"></input> <br>
 		<br>
 
 		<h4> Quote Some code into your Project</h4>
-		<input type="button" class = "btn" id="quoteToProject" value = "Quote to Project"></input> <br>
 		<input type = "number" id ="insertionLine"> Line to insert at </input> <br>
+		<input type="button" class = "btn" id="quoteToProject" value = "Quote to Project"></input> <br>
 		<br>
 
 		View the readme on <a href="https://github.com/pvienhage/SoliditySnippetPlugin/blob/master/README.md">  github</a>, and if you have any issues please make sure to open them there.
@@ -159,7 +159,7 @@
 	}else{
 		document.getElementById("path").innerHTML = localStorage.getItem("listSoliditySnippetPlugin")
 	}
-	  
+
 	var filter = document.getElementById('filterOpenZep')
 	filter.addEventListener('keyup', function () {
 		var opts = document.querySelectorAll('option')
@@ -168,7 +168,7 @@
 			if (!filter.value) {
 				opt.style.display = "block"
 			} else {
-				opt.style.display = opt.value.toLowerCase().indexOf(filter.value.toLowerCase()) === -1 ? 'none' : 'block'	
+				opt.style.display = opt.value.toLowerCase().indexOf(filter.value.toLowerCase()) === -1 ? 'none' : 'block'
 			}
 			if (opt.style.display == "block") nb++
 		})

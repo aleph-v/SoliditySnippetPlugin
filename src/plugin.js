@@ -4,8 +4,8 @@ test contract creation
 */
 var addrResolverByteCode = '0x6060604052341561000f57600080fd5b33600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555061033c8061005f6000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806338cc483114610067578063767800de146100bc578063a6f9dae114610111578063d1d80fdf1461014a575b600080fd5b341561007257600080fd5b61007a610183565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100c757600080fd5b6100cf6101ac565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561011c57600080fd5b610148600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101d1565b005b341561015557600080fd5b610181600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610271565b005b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561022d57600080fd5b80600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156102cd57600080fd5b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058201b23355f578cb9a23c0a43a440ab2631b62df7be0a8e759812a70f01344224da0029'
 
-const ownableURL = "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/math/Math.sol"
-const safemathURL = "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/ownership/Ownable.sol"
+const safemathURL = "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/math/Math.sol"
+const ownableURL = "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/ownership/Ownable.sol"
 const merkleURL = "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/cryptography/MerkleProof.sol"
 const sigURL = "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/cryptography/ECDSA.sol"
 const stringURL = "https://github.com/Arachnid/solidity-stringutils/src/strings.sol"
@@ -132,8 +132,10 @@ async function projectParser(fetchReturn, start, end, code, currentPath){
   data = data.split('\n')
 
   let elementsAtEnd = await data.length - end
-  await data.splice(0,start-2) //minus two since one is at the start and we want to include start line
-  await data.splice(end - start, elementsAtEnd)
+  await data.splice(0,start-1) 
+  await data.splice(end - (start-1), elementsAtEnd)
+
+  console.log(data)
 
   for(i = data.length; i >=0; i = i - 1){
       await currentCode.splice(document.getElementById('insertionLine').value, 0, data[i])
@@ -148,12 +150,13 @@ async function projectParser(fetchReturn, start, end, code, currentPath){
 async function fileParser(fetchReturn, start, end, contractName, hasFunction) {
   let data = await fetchReturn
   data = await data.text()
-  data = data.split('\n')
+  data = await data.split('\n')
 
   let len = await data.length
-  if(end === 0){
+  if(end == 0){
     end = len
   }
+
   let elementsAtEnd = await len - end
   await data.splice(1,start-2) //minus two since one is at the start and we want to include start line
   await data.splice(end - start, elementsAtEnd)
@@ -167,7 +170,6 @@ async function fileParser(fetchReturn, start, end, contractName, hasFunction) {
 
   if(hasFunction){
     await data.splice(2,0, document.getElementById('functionName').value)
-    await data.splice(data.length-1,0," } ")
   }
 
   extension.call('editor','getCurrentFile', [], function (error, result) {
