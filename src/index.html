@@ -34,6 +34,14 @@
 		<script type="text/javascript" src="remix-api.js"></script>
         <script type="text/javascript" src="plugin.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<style> 
+			body {
+				padding: 10px;
+			}
+			input {
+				margin: 1px;
+			}
+		</style>
 	</head>
 	<body>
 		<h3> Solidity Snippet Importer </h4>
@@ -44,7 +52,7 @@
 				<input type="button" class = "btn" id="string" value = "Import String Utilities"></input> <br>
 				<input type="button" class = "btn" id="sig" value = "Import Eleptic Curve Signatures"></input> <br>
 		<h4>Import an OpenZeppelin File</h3>
-				<span>Search:</span><input type="text" id="filterOpenZep"></input><span id="filterNumber"></span>
+				<span>Search: </span><input type="text" id="filterOpenZep"></input><span id="filterNumber"></span>
 				<input type="button" class = "btn" id="zepplinImport" value = "Import"></input> <br>
 				<select id= "path" > </select>
 				<p> Please note that the drafts and mocks directories of OpenZeppelin are not necessarily finished code.
@@ -160,7 +168,7 @@
 			if (!filter.value) {
 				opt.style.display = "block"
 			} else {
-				opt.style.display = opt.value.toLowerCase().indexOf(filter.value) === -1 ? 'none' : 'block'	
+				opt.style.display = opt.value.toLowerCase().indexOf(filter.value.toLowerCase()) === -1 ? 'none' : 'block'	
 			}
 			if (opt.style.display == "block") nb++
 		})
